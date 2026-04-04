@@ -1,134 +1,123 @@
-# 🧠 Brain Disease Classification using Deep Learning
+# 🧠 Brain Disease Classification App
 
-## 📌 Problem Statement
+> A Deep Learning application that classifies brain MRI images into disease categories using a fine-tuned ResNet model — deployed as a web app for real-time diagnosis support.
 
-Early detection of brain diseases is critical for effective treatment. This project aims to build a deep learning model that can classify brain images into different disease categories using medical imaging data.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange?style=flat-square&logo=tensorflow)
+![Model](https://img.shields.io/badge/Model-ResNet%20Fine--Tuned-red?style=flat-square)
+![Domain](https://img.shields.io/badge/Domain-Medical%20Imaging-purple?style=flat-square)
+
+---
+
+## 🧠 Overview
+
+Early detection of brain diseases is critical for effective treatment outcomes. This project leverages **Transfer Learning with ResNet** to classify brain MRI scans into multiple disease categories, providing a fast and accessible screening tool via a web interface.
 
 ---
 
 ## 📊 Dataset
 
-* Medical imaging dataset (MRI/CT scans)
-* Multi-class classification problem
-* Images categorized into different brain conditions (e.g., tumor / normal / other classes)
+- **Type:** Brain MRI / CT scan images
+- **Problem:** Multi-class classification
+- **Classes:** Tumor / Normal / Other brain conditions
+- **Preprocessing:** Resized to uniform shape, normalised pixel values, train/validation split
 
 ---
 
-## ⚙️ Workflow
+## ⚙️ ML Pipeline
 
-### 🔹 1. Data Preprocessing
-
-* Resized images to a uniform shape
-* Normalized pixel values
-* Split dataset into training and validation sets
-
----
-
-### 🔹 2. Data Augmentation
-
-* Applied transformations such as:
-
-  * Rotation
-  * Flipping
-  * Zooming
-
-👉 Helps improve generalization and prevent overfitting
-
----
-
-### 🔹 3. Model Building
-
-* Built a **Convolutional Neural Network (CNN)**
-* Used multiple layers:
-
-  * Convolution layers
-  * Activation (ReLU)
-  * Pooling layers
-  * Fully connected layers
+```
+MRI Images
+   │
+   ▼
+Preprocessing (Resize, Normalize)
+   │
+   ▼
+Data Augmentation (Rotation, Flip, Zoom)
+   │
+   ▼
+ResNet (Fine-Tuned via Transfer Learning)
+   │
+   ▼
+Softmax Output → Disease Class
+   │
+   ▼
+Flask Web App (Real-time Prediction)
+```
 
 ---
 
-### 🔹 4. Model Training
+## 🤖 Model Architecture
 
-* Optimizer: Adam
-* Loss Function: Categorical Crossentropy
-* Trained model on training dataset
-* Validated on unseen data
-
----
-
-### 🔹 5. Evaluation
-
-* Measured performance using:
-
-  * Accuracy
-  * Validation loss
+- **Base Model:** ResNet (pre-trained on ImageNet)
+- **Fine-tuning:** Top layers retrained on brain MRI dataset
+- **Optimizer:** Adam
+- **Loss:** Categorical Crossentropy
+- **Augmentation:** Rotation, horizontal flip, zoom
 
 ---
 
-## 🤖 Model Architecture (Summary)
+## 🛠️ Tech Stack
 
-* Input Layer (Image)
-* Convolution + ReLU
-* Max Pooling
-* Fully Connected Layers
-* Output Layer (Softmax for classification)
-
----
-
-## 📈 Results
-
-* Achieved strong classification accuracy on validation data
-* Model successfully learned patterns from medical images
-* Demonstrated good generalization on unseen data
+- Python, TensorFlow, Keras
+- ResNet (Transfer Learning)
+- OpenCV, NumPy, Matplotlib
+- Flask (Web App), HTML/CSS (Templates)
 
 ---
 
-## 🔍 Key Insights
+## 🚀 Run Locally
 
-* Deep learning models are effective for image-based medical diagnosis
-* Data augmentation significantly improves model performance
-* Proper preprocessing is critical for better accuracy
+```bash
+git clone https://github.com/kushalhallikar-spec/Brain_disease_classification_app.git
+cd Brain_disease_classification_app
+pip install -r requirements.txt
+python app.py
+```
 
----
-
-## 🛠️ Technologies Used
-
-* Python
-* TensorFlow / Keras
-* NumPy
-* OpenCV
-* Matplotlib
-
----
-
-## 🚀 Future Improvements
-
-* Use transfer learning (e.g., ResNet, VGG16)
-* Hyperparameter tuning
-* Deploy model using Streamlit or Flask
-* Use larger and more diverse datasets
+Then open `http://localhost:5000` in your browser, upload an MRI image, and get a prediction.
 
 ---
 
 ## 📁 Project Structure
 
-```text
-brain-disease-classification/
+```
+Brain_disease_classification_app/
 │
-├── model.ipynb
-├── dataset/
-├── images/
-├── README.md
-├── requirements.txt
+├── app.py                              # Flask app — routes & prediction logic
+├── app_fresh.py                        # Alternate app version
+├── Total_Disease_Brain_ResNet_FineTuned.py  # Model training script
+├── list_models.py                      # Model listing utility
+├── templates/                          # HTML frontend
+└── requirements.txt
 ```
 
 ---
 
-## 🚀 Conclusion
+## 🔍 Key Insights
 
-This project demonstrates how deep learning can be applied in the healthcare domain to assist in disease detection using medical imaging. The model shows promising results and can be further improved for real-world applications.
+- Transfer learning drastically reduces training time vs training from scratch
+- Data augmentation is critical for medical imaging — real datasets are small
+- ResNet's residual connections handle vanishing gradients well for deep networks
 
 ---
 
-⭐ If you found this project useful, consider giving it a star!
+## 🔮 Future Improvements
+
+- [ ] Add Grad-CAM visualisation to highlight disease regions on MRI
+- [ ] Expand to more disease classes (Alzheimer's, MS, stroke)
+- [ ] Deploy on Hugging Face Spaces or Streamlit Cloud
+- [ ] Improve dataset diversity for better generalisation
+
+---
+
+## 👨‍💻 Author
+
+**Kushal Hallikar**
+Aspiring Machine Learning Engineer
+
+[![GitHub](https://img.shields.io/badge/GitHub-kushalhallikar--spec-181717?style=flat-square&logo=github)](https://github.com/kushalhallikar-spec)
+
+---
+
+⭐ If you found this useful, consider giving it a star!
