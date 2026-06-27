@@ -1,81 +1,82 @@
+<div align="center">
+
 # 🧠 Brain Disease Classification App
 
-> A Deep Learning application that classifies brain MRI images into disease categories using a fine-tuned ResNet model — deployed as a web app for real-time diagnosis support.
+### Real-time brain MRI analysis powered by Deep Learning & AI
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange?style=flat-square&logo=tensorflow)
-![Model](https://img.shields.io/badge/Model-ResNet%20Fine--Tuned-red?style=flat-square)
-![Domain](https://img.shields.io/badge/Domain-Medical%20Imaging-purple?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13-orange?style=for-the-badge&logo=tensorflow)
+![Flask](https://img.shields.io/badge/Flask-3.0-black?style=for-the-badge&logo=flask)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT-412991?style=for-the-badge&logo=openai)
 
----
-
-## 🧠 Overview
-
-Early detection of brain diseases is critical for effective treatment outcomes. This project leverages **Transfer Learning with ResNet** to classify brain MRI scans into multiple disease categories, providing a fast and accessible screening tool via a web interface.
+</div>
 
 ---
 
-## 📊 Dataset
+## ✨ What is this?
 
-- **Type:** Brain MRI / CT scan images
-- **Problem:** Multi-class classification
-- **Classes:** Tumor / Normal / Other brain conditions
-- **Preprocessing:** Resized to uniform shape, normalised pixel values, train/validation split
+> Upload a brain MRI scan → Get instant AI-powered disease classification → Ask the chatbot anything about your results.
+
+This app uses a **fine-tuned ResNet model** trained on brain MRI scans to detect:
+
+| Disease | Status |
+|---------|--------|
+| 🔴 Brain Tumor | ✅ Supported |
+| 🟡 Alzheimer's Disease | ✅ Supported |
+| 🟠 Multiple Sclerosis | ✅ Supported |
+| 🟢 Normal | ✅ Supported |
 
 ---
 
-## ⚙️ ML Pipeline
+## ⚙️ How It Works
 
 ```
-MRI Images
-   │
-   ▼
-Preprocessing (Resize, Normalize)
-   │
-   ▼
-Data Augmentation (Rotation, Flip, Zoom)
-   │
-   ▼
-ResNet (Fine-Tuned via Transfer Learning)
-   │
-   ▼
-Softmax Output → Disease Class
-   │
-   ▼
-Flask Web App (Real-time Prediction)
+📤 Upload MRI Scan
+       │
+       ▼
+🔄 Preprocessing (Resize · Normalize · Augment)
+       │
+       ▼
+🧠 ResNet (Fine-Tuned on ImageNet + Brain MRI Dataset)
+       │
+       ▼
+📊 Softmax → Disease Class + Confidence Score
+       │
+       ▼
+🤖 OpenAI Chatbot → Ask questions about your result
 ```
-
----
-
-## 🤖 Model Architecture
-
-- **Base Model:** ResNet (pre-trained on ImageNet)
-- **Fine-tuning:** Top layers retrained on brain MRI dataset
-- **Optimizer:** Adam
-- **Loss:** Categorical Crossentropy
-- **Augmentation:** Rotation, horizontal flip, zoom
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python, TensorFlow, Keras
-- ResNet (Transfer Learning)
-- OpenCV, NumPy, Matplotlib
-- Flask (Web App), HTML/CSS (Templates)
+```
+🐍 Python 3.10        🔥 TensorFlow & Keras
+🧠 ResNet (TL)        👁️ OpenCV
+🌐 Flask              🎨 HTML · CSS · JavaScript  
+🤖 OpenAI GPT         📊 NumPy · Matplotlib
+```
 
 ---
 
 ## 🚀 Run Locally
 
 ```bash
+# Clone the repo
 git clone https://github.com/kushalhallikar-spec/Brain_disease_classification_app.git
 cd Brain_disease_classification_app
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Add your OpenAI API key
+echo "OPENAI_API_KEY=your_key_here" > .env
+
+# Run the app
 python app.py
 ```
 
-Then open `http://localhost:5000` in your browser, upload an MRI image, and get a prediction.
+Open `http://localhost:5000` and upload an MRI scan.
 
 ---
 
@@ -84,40 +85,42 @@ Then open `http://localhost:5000` in your browser, upload an MRI image, and get 
 ```
 Brain_disease_classification_app/
 │
-├── app.py                              # Flask app — routes & prediction logic
-├── app_fresh.py                        # Alternate app version
-├── Total_Disease_Brain_ResNet_FineTuned.py  # Model training script
-├── list_models.py                      # Model listing utility
-├── templates/                          # HTML frontend
-└── requirements.txt
+├── 🐍 app.py                                   # Flask backend
+├── 🧠 Total_Disease_Brain_ResNet_FineTuned.py  # Model training
+├── 📋 requirements.txt                         # Dependencies
+├── 🎨 templates/                               # HTML frontend
+└── ⚡ static/                                  # CSS & JS
 ```
 
 ---
 
 ## 🔍 Key Insights
 
-- Transfer learning drastically reduces training time vs training from scratch
-- Data augmentation is critical for medical imaging — real datasets are small
-- ResNet's residual connections handle vanishing gradients well for deep networks
+- ⚡ **Transfer Learning** cuts training time drastically vs from scratch
+- 🔄 **Data Augmentation** is essential — medical datasets are small
+- 🏗️ **ResNet residual connections** solve vanishing gradient for deep networks
 
 ---
 
-## 🔮 Future Improvements
+## 🔮 Roadmap
 
-- [ ] Add Grad-CAM visualisation to highlight disease regions on MRI
-- [ ] Expand to more disease classes (Alzheimer's, MS, stroke)
-- [ ] Deploy on Hugging Face Spaces or Streamlit Cloud
-- [ ] Improve dataset diversity for better generalisation
+- [ ] Grad-CAM visualisation to highlight disease regions
+- [ ] Expand dataset diversity for better generalisation
+- [ ] Deploy on Hugging Face Spaces
+- [ ] Add patient report generation (PDF export)
 
 ---
+
+<div align="center">
 
 ## 👨‍💻 Author
 
 **Kushal Hallikar**
-Aspiring Machine Learning Engineer
+*Aspiring Machine Learning Engineer*
 
-[![GitHub](https://img.shields.io/badge/GitHub-kushalhallikar--spec-181717?style=flat-square&logo=github)](https://github.com/kushalhallikar-spec)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/kushalhallikar/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/kushalhallikar-spec)
 
----
+⭐ **Star this repo if you found it useful!**
 
-⭐ If you found this useful, consider giving it a star!
+</div>
